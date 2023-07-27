@@ -12,8 +12,8 @@ class AppStore {
 
   final themeMode = ValueNotifier(ThemeMode.dark);
 
-  void changeThemeMode() {
-    final mode = _service.getThemeMode() == ThemeMode.dark.name
+  Future changeThemeMode() async {
+    final mode = await _service.getThemeMode() == ThemeMode.dark.name
         ? ThemeMode.light
         : ThemeMode.dark;
 
@@ -44,6 +44,7 @@ class AppStore {
   }
 
   ThemeMode _getThemeModeByName(String name) {
-    return ThemeMode.values.firstWhere((mode) => mode.name == name);
+    print(ThemeMode.values.firstWhere((mode) => mode.name.contains(name)));
+    return ThemeMode.values.firstWhere((mode) => mode.name.contains(name));
   }
 }
