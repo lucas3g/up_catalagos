@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:up_catalagos/app/core_module/services/shared_preferences/adapters/shared_params.dart';
-import 'package:up_catalagos/app/core_module/services/shared_preferences/local_storage_interface.dart';
-import 'package:up_catalagos/app/shared/components/my_elevated_button_widget.dart';
-import 'package:up_catalagos/app/shared/stores/app_store.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -13,12 +9,10 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  init() async {
-    final shared = Modular.get<ILocalStorage>();
+  Future init() async {
+    await Future.delayed(const Duration(seconds: 1));
 
-    await shared.setData(params: SharedParams(key: 'key', value: 'value'));
-
-    print(await shared.getData('key'));
+    Modular.to.navigate('/auth/');
   }
 
   @override
@@ -30,16 +24,9 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    final appStore = context.watch<AppStore>(
-      (store) => store.themeMode,
-    );
-
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-        child: MyElevatedButtonWidget(
-          label: const Text('Troca Tema'),
-          onPressed: appStore.changeThemeMode,
-        ),
+        child: Text('UP Catalagos'),
       ),
     );
   }

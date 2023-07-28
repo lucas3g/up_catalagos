@@ -22,7 +22,7 @@ class AppWidget extends StatelessWidget {
     );
 
     return MaterialApp.router(
-      title: 'Posto Plus',
+      title: 'UP Catálogos',
       debugShowCheckedModeBanner: false,
       themeMode: appStore.themeMode.value,
       theme: lightTheme,

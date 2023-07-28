@@ -15,7 +15,7 @@ class ThemeModeService implements IThemeMode {
 
   @override
   Future<String> getThemeMode() async {
-    return await localStorage.getData('theme_mode');
+    return await localStorage.getData('theme_mode') ?? 'dark';
   }
 
   @override

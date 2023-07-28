@@ -44,7 +44,6 @@ class AppStore {
   }
 
   ThemeMode _getThemeModeByName(String name) {
-    print(ThemeMode.values.firstWhere((mode) => mode.name.contains(name)));
     return ThemeMode.values.firstWhere((mode) => mode.name.contains(name));
   }
 }

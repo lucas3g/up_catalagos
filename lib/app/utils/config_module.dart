@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 ModuleRoute configModule(
   String name, {
   required Module module,
-  TransitionType? transition,
+  TransitionType? transition = TransitionType.noTransition,
   CustomTransition? customTransition,
   Duration? duration,
   List<RouteGuard> guards = const [],
