@@ -46,6 +46,7 @@ dependencies:
   result_dart: ^1.1.0
   brasil_fields: ^1.13.1
   string_validator: ^1.0.0
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:

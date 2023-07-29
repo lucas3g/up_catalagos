@@ -8,13 +8,14 @@ final lightTheme = ThemeData(
   fontFamily: GoogleFonts.roboto().fontFamily,
   colorScheme: _lightColorScheme,
   appBarTheme: AppBarTheme(
-    backgroundColor: _lightColorScheme.onPrimaryContainer,
+    backgroundColor: _lightColorScheme.primary,
     centerTitle: true,
     foregroundColor: _lightColorScheme.background,
     iconTheme: IconThemeData(
       color: _lightColorScheme.background,
     ),
   ),
+  scaffoldBackgroundColor: _lightColorScheme.background,
   dialogTheme: DialogTheme(
     backgroundColor: _lightColorScheme.background,
     surfaceTintColor: _lightColorScheme.background,

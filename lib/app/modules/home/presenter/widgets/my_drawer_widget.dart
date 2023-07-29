@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:up_catalagos/app/core_module/constants/constants.dart';
 import 'package:up_catalagos/app/core_module/services/shared_preferences/local_storage_interface.dart';
-import 'package:up_catalagos/app/shared/stores/app_store.dart';
+import 'package:up_catalagos/app/core_module/services/theme_mode/theme_mode_controller.dart';
 
 class MyDrawerWidget extends StatefulWidget {
   const MyDrawerWidget({
@@ -16,10 +16,6 @@ class MyDrawerWidget extends StatefulWidget {
 class _MyDrawerWidgetState extends State<MyDrawerWidget> {
   @override
   Widget build(BuildContext context) {
-    final appStore = context.watch<AppStore>(
-      (store) => store.themeMode,
-    );
-
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -32,9 +28,9 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
               ),
               child: DrawerHeader(
                 decoration: BoxDecoration(
-                  color: appStore.themeMode.value == ThemeMode.dark
+                  color: ThemeModeController.themeMode == ThemeMode.dark
                       ? context.myTheme.primaryContainer
-                      : context.myTheme.secondary,
+                      : context.myTheme.primary,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +50,7 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
           ),
           Container(
             height: context.screenHeight * .85,
-            color: appStore.themeMode.value == ThemeMode.dark
+            color: ThemeModeController.themeMode == ThemeMode.dark
                 ? backgroundBlack
                 : context.myTheme.background,
             child: Column(
@@ -65,19 +61,30 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                     ListTile(
                       minLeadingWidth: 2,
                       leading: Icon(
-                        appStore.themeMode.value == ThemeMode.dark
+                        ThemeModeController.themeMode == ThemeMode.dark
                             ? Icons.dark_mode
                             : Icons.light_mode,
-                        color: appStore.themeMode.value == ThemeMode.dark
+                        color: ThemeModeController.themeMode == ThemeMode.dark
                             ? context.myTheme.primaryContainer
                             : context.myTheme.primary,
                       ),
                       title: Text(
-                        appStore.themeMode.value == ThemeMode.dark
+                        ThemeModeController.themeMode == ThemeMode.dark
                             ? 'Dark'
                             : 'Light',
                       ),
-                      onTap: appStore.changeThemeMode,
+                      onTap: ThemeModeController.appStore.changeThemeMode,
+                    ),
+                    ListTile(
+                      minLeadingWidth: 2,
+                      leading: Icon(
+                        Icons.support_agent_rounded,
+                        color: ThemeModeController.themeMode == ThemeMode.dark
+                            ? context.myTheme.primaryContainer
+                            : context.myTheme.primary,
+                      ),
+                      title: const Text('Suporte'),
+                      onTap: () {},
                     ),
                   ],
                 ),
@@ -94,7 +101,7 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                       minLeadingWidth: 2,
                       leading: Icon(
                         Icons.exit_to_app,
-                        color: appStore.themeMode.value == ThemeMode.dark
+                        color: ThemeModeController.themeMode == ThemeMode.dark
                             ? context.myTheme.primaryContainer
                             : context.myTheme.primary,
                       ),

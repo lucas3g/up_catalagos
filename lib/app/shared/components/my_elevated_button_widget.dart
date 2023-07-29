@@ -36,7 +36,7 @@ class _MyElevatedButtonWidgetState extends State<MyElevatedButtonWidget> {
         style: ElevatedButton.styleFrom(
           backgroundColor: widget.backgroundColor ??
               (ThemeModeController.themeMode == ThemeMode.dark
-                  ? context.myTheme.primaryContainer
+                  ? context.myTheme.onPrimary
                   : context.myTheme.primary),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
