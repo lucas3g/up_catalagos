@@ -49,6 +49,15 @@ class _AuthPageState extends State<AuthPage> {
                       Modular.to.navigate('/home/');
                     },
                   ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Text('Não tem uma conta ainda?'),
+                      const SizedBox(width: 5),
+                      TextButton(
+                          onPressed: () {}, child: const Text('Clique aqui'))
+                    ],
+                  ),
                 ],
               ),
             ),

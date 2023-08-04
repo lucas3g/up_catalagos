@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:up_catalagos/app/core_module/constants/constants.dart';
-import 'package:up_catalagos/app/core_module/services/theme_mode/theme_mode_controller.dart';
 import 'package:up_catalagos/app/modules/home/presenter/widgets/my_drawer_widget.dart';
 import 'package:up_catalagos/app/shared/components/my_circular_progress_widget.dart';
 import 'package:up_catalagos/app/shared/components/my_elevated_button_widget.dart';
@@ -140,9 +139,7 @@ class _HomePageState extends State<HomePage> {
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
                           width: 5,
-                          color: ThemeModeController.themeMode == ThemeMode.dark
-                              ? context.myTheme.onPrimary
-                              : context.myTheme.primary,
+                          color: context.myTheme.onPrimary,
                         ),
                       ),
                       child: Stack(
@@ -169,10 +166,7 @@ class _HomePageState extends State<HomePage> {
                                 onPressed: () {},
                                 icon: Icon(
                                   Icons.delete,
-                                  color: ThemeModeController.themeMode ==
-                                          ThemeMode.dark
-                                      ? context.myTheme.onPrimary
-                                      : context.myTheme.primary,
+                                  color: context.myTheme.onPrimary,
                                 ),
                               ),
                             ),
@@ -192,9 +186,7 @@ class _HomePageState extends State<HomePage> {
         width: context.screenWidth,
         height: 25,
         decoration: BoxDecoration(
-          color: ThemeModeController.themeMode == ThemeMode.dark
-              ? context.myTheme.onPrimary
-              : context.myTheme.primary,
+          color: context.myTheme.onPrimary,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

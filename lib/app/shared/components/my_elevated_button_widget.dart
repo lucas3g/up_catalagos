@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:up_catalagos/app/core_module/constants/constants.dart';
-import 'package:up_catalagos/app/core_module/services/theme_mode/theme_mode_controller.dart';
 
 class MyElevatedButtonWidget extends StatefulWidget {
   final Widget label;
@@ -34,10 +33,7 @@ class _MyElevatedButtonWidgetState extends State<MyElevatedButtonWidget> {
       child: ElevatedButton(
         onPressed: widget.onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: widget.backgroundColor ??
-              (ThemeModeController.themeMode == ThemeMode.dark
-                  ? context.myTheme.onPrimary
-                  : context.myTheme.primary),
+          backgroundColor: widget.backgroundColor ?? context.myTheme.onPrimary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),

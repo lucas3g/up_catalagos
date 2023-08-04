@@ -26,13 +26,11 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
             height: context.screenHeight * .15,
             child: Theme(
               data: ThemeData().copyWith(
-                dividerColor: context.myTheme.background,
+                dividerColor: Colors.transparent,
               ),
               child: DrawerHeader(
                 decoration: BoxDecoration(
-                  color: ThemeModeController.themeMode == ThemeMode.dark
-                      ? context.myTheme.primaryContainer
-                      : context.myTheme.primary,
+                  color: context.myTheme.onPrimary,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -66,15 +64,8 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                       onTap: () {},
                     ),
                     MyListTileWidget(
-                      leftIcon: Icons.settings,
-                      title: 'Configuração',
-                      onTap: () {
-                        ThemeModeController.appStore.changeThemeMode();
-                      },
-                    ),
-                    MyListTileWidget(
-                      leftIcon: Icons.support_agent_rounded,
-                      title: 'Suporte',
+                      leftIcon: Icons.notification_add,
+                      title: 'Notificações',
                       onTap: () {},
                     ),
                   ],
@@ -82,7 +73,7 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                 Column(
                   children: [
                     MyListTileWidget(
-                      leftIcon: Icons.exit_to_app,
+                      leftIcon: Icons.exit_to_app_rounded,
                       title: 'Sair',
                       onTap: () async {
                         final localStorage = Modular.get<ILocalStorage>();

@@ -60,9 +60,7 @@ class MyInputWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color returnBorderColor() {
-      return ThemeModeController.themeMode == ThemeMode.dark
-          ? context.myTheme.onBackground
-          : context.myTheme.background;
+      return context.myTheme.onBackground;
     }
 
     return TextFormField(
@@ -96,17 +94,12 @@ class MyInputWidget extends StatelessWidget {
         hintText: hintText,
         hintStyle: context.textTheme.bodyLarge?.copyWith(
           color: color?.withOpacity(0.7) ??
-              (ThemeModeController.themeMode == ThemeMode.dark
-                  ? context.myTheme.onBackground.withOpacity(0.7)
-                  : context.myTheme.background.withOpacity(0.7)),
+              context.myTheme.onBackground.withOpacity(0.7),
         ),
         label: Text(
           label,
           style: context.textTheme.bodyLarge?.copyWith(
-            color: color ??
-                (ThemeModeController.themeMode == ThemeMode.dark
-                    ? context.myTheme.onBackground
-                    : context.myTheme.background),
+            color: color ?? context.myTheme.onBackground,
           ),
         ),
         suffixIcon: suffixIcon,
