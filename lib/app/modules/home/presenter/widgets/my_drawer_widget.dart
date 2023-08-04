@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:up_catalagos/app/core_module/constants/constants.dart';
 import 'package:up_catalagos/app/core_module/services/shared_preferences/local_storage_interface.dart';
 import 'package:up_catalagos/app/core_module/services/theme_mode/theme_mode_controller.dart';
+import 'package:up_catalagos/app/shared/components/my_list_tile_widget.dart';
 
 class MyDrawerWidget extends StatefulWidget {
   const MyDrawerWidget({
@@ -58,39 +60,30 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
               children: [
                 Column(
                   children: [
-                    ListTile(
-                      minLeadingWidth: 2,
-                      leading: Icon(
-                        ThemeModeController.themeMode == ThemeMode.dark
-                            ? Icons.dark_mode
-                            : Icons.light_mode,
-                        color: ThemeModeController.themeMode == ThemeMode.dark
-                            ? context.myTheme.primaryContainer
-                            : context.myTheme.primary,
-                      ),
-                      title: Text(
-                        ThemeModeController.themeMode == ThemeMode.dark
-                            ? 'Dark'
-                            : 'Light',
-                      ),
-                      onTap: ThemeModeController.appStore.changeThemeMode,
+                    MyListTileWidget(
+                      leftIcon: LineIcons.readme,
+                      title: 'Relatórios',
+                      onTap: () {},
                     ),
-                    ListTile(
-                      minLeadingWidth: 2,
-                      leading: Icon(
-                        Icons.support_agent_rounded,
-                        color: ThemeModeController.themeMode == ThemeMode.dark
-                            ? context.myTheme.primaryContainer
-                            : context.myTheme.primary,
-                      ),
-                      title: const Text('Suporte'),
+                    MyListTileWidget(
+                      leftIcon: Icons.settings,
+                      title: 'Configuração',
+                      onTap: () {
+                        ThemeModeController.appStore.changeThemeMode();
+                      },
+                    ),
+                    MyListTileWidget(
+                      leftIcon: Icons.support_agent_rounded,
+                      title: 'Suporte',
                       onTap: () {},
                     ),
                   ],
                 ),
                 Column(
                   children: [
-                    ListTile(
+                    MyListTileWidget(
+                      leftIcon: Icons.exit_to_app,
+                      title: 'Sair',
                       onTap: () async {
                         final localStorage = Modular.get<ILocalStorage>();
 
@@ -98,17 +91,6 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
 
                         Modular.to.navigate('/auth/');
                       },
-                      minLeadingWidth: 2,
-                      leading: Icon(
-                        Icons.exit_to_app,
-                        color: ThemeModeController.themeMode == ThemeMode.dark
-                            ? context.myTheme.primaryContainer
-                            : context.myTheme.primary,
-                      ),
-                      title: const Text(
-                        'Sair',
-                        textAlign: TextAlign.start,
-                      ),
                     ),
                     const ListTile(
                       title: Text(
