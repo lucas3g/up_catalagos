@@ -3,16 +3,10 @@ import 'package:up_catalagos/app/modules/home/presenter/home_page.dart';
 
 class HomeModule extends Module {
   @override
-  final List<Module> imports = [];
-
-  @override
-  final List<Bind> binds = [];
-
-  @override
-  final List<ModularRoute> routes = [
-    ChildRoute(
+  void routes(r) {
+    r.child(
       '/',
-      child: (context, args) => const HomePage(),
-    )
-  ];
+      child: (context) => const HomePage(),
+    );
+  }
 }

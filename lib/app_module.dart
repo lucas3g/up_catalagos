@@ -5,7 +5,6 @@ import 'package:up_catalagos/app/modules/auth/auth_module.dart';
 import 'package:up_catalagos/app/modules/home/home_module.dart';
 import 'package:up_catalagos/app/modules/splash/splash_module.dart';
 import 'package:up_catalagos/app/shared/stores/app_store.dart';
-import 'package:up_catalagos/app/utils/config_module.dart';
 
 class AppModule extends Module {
   @override
@@ -17,18 +16,18 @@ class AppModule extends Module {
   ];
 
   @override
-  final List<Bind> binds = [
+  void binds(i) {
     //STORES
-    AutoBind.singleton<AppStore>(AppStore.new),
+    i.addSingleton<AppStore>(AppStore.new);
 
     //THEME MODE
-    AutoBind.singleton<IThemeMode>(ThemeModeService.new),
-  ];
+    i.addSingleton<IThemeMode>(ThemeModeService.new);
+  }
 
   @override
-  final List<ModularRoute> routes = [
-    configModule('/', module: SplashModule()),
-    configModule('/auth', module: AuthModule()),
-    configModule('/home', module: HomeModule()),
-  ];
+  void routes(r) {
+    r.module('/', module: SplashModule());
+    r.module('/auth', module: AuthModule());
+    r.module('/home', module: HomeModule());
+  }
 }

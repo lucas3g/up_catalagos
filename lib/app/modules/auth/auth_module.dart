@@ -3,16 +3,10 @@ import 'package:up_catalagos/app/modules/auth/presenter/auth_page.dart';
 
 class AuthModule extends Module {
   @override
-  final List<Module> imports = [];
-
-  @override
-  final List<Bind> binds = [];
-
-  @override
-  final List<ModularRoute> routes = [
-    ChildRoute(
+  void routes(r) {
+    r.child(
       '/',
-      child: (context, args) => const AuthPage(),
-    )
-  ];
+      child: (context) => const AuthPage(),
+    );
+  }
 }

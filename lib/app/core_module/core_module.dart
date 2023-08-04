@@ -7,32 +7,25 @@ import 'services/client_http/dio_client_http.dart';
 import 'services/shared_preferences/local_storage_interface.dart';
 import 'services/shared_preferences/shared_preferences_service.dart';
 
-Bind<Dio> _dioFactory() {
+Dio _dioFactory() {
   final baseOptions = BaseOptions(
     baseUrl: baseUrl,
     headers: {'Content-Type': 'application/json'},
   );
 
-  return Bind.factory<Dio>(
-    (i) => Dio(baseOptions)..interceptors.add(DioInterceptor()),
-  );
+  return Dio(baseOptions)..interceptors.add(DioInterceptor());
 }
 
 class CoreModule extends Module {
   @override
-  final List<Bind> exportedBinds = [
+  void exportedBinds(i) {
     //DIO
-    _dioFactory(),
+    i.add(_dioFactory);
 
     //CLIENTHTTP
-    AutoBind.factory<IClientHttp>(DioClientHttp.new),
-
-    //SHARED PREFERENCES
-    // AutoBind.factory(
-    //   (i) async => SharedPreferences.getInstance(),
-    // ),
+    i.add<IClientHttp>(DioClientHttp.new);
 
     //LOCAL STORAGE
-    AutoBind.factory<ILocalStorage>(SharedPreferencesService.new),
-  ];
+    i.add<ILocalStorage>(SharedPreferencesService.new);
+  }
 }

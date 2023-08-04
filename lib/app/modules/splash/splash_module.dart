@@ -3,16 +3,10 @@ import 'package:up_catalagos/app/modules/splash/presenter/splas_page.dart';
 
 class SplashModule extends Module {
   @override
-  final List<Module> imports = [];
-
-  @override
-  final List<Bind> binds = [];
-
-  @override
-  final List<ModularRoute> routes = [
-    ChildRoute(
+  void routes(r) {
+    r.child(
       '/',
-      child: (context, args) => const SplashPage(),
-    )
-  ];
+      child: (context) => const SplashPage(),
+    );
+  }
 }
